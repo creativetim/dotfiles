@@ -50,8 +50,6 @@ display_colors (){
 	echo -e "\033[0;36mCOLOR_CYAN\t\033[1;36mCOLOR_BRIGHT_CYAN"
 	echo -e "\033[0;37mCOLOR_WHITE\t\033[1;37mCOLOR_BRIGHT_WHITE"
 }
- 
-default_username='timyager'
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] && infocmp gnome-256color >/dev/null 2>&1; then
 	export TERM=gnome-256color
@@ -106,7 +104,7 @@ function rvm_info() {
 
 # Only show username/host if not default
 function usernamehost() {
-	if [ $USER != $default_username ]; then echo "${MAGENTA}$USER ${WHITE}using ${ORANGE}$(rvm_info)$WHITE in "; fi
+	echo "${MAGENTA}$default_username ${WHITE}using ${ORANGE}$(rvm_info)$WHITE in "
 }
 
 # iTerm Tab and Title Customization and prompt customization
