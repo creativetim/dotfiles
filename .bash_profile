@@ -8,14 +8,19 @@
 # brew install curl-ca-bundle
 # curl -L https://get.rvm.io | bash -s stable
 ################################################################
- 
-PATH=/usr/local/bin:$PATH:$HOME/.rvm/bin:$HOME/bin # Add RVM to PATH for scripting
+
+PATH=/usr/local/bin:/usr/local/sbin:$HOME/.rvm/bin:$HOME/bin:$PATH # Add RVM to PATH for scripting
 export PATH
  
 export CLICOLOR=1
 export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 export GREP_OPTIONS='--color=auto' GREP_COLOR='1;32'
- 
+
+# Use GCC from Homebrew
+export CC=/usr/local/Cellar/apple-gcc42/4.2.1-5666.3/bin/gcc-4.2
+export CXX=/usr/local/Cellar/apple-gcc42/4.2.1-5666.3/bin/g++-4.2
+export CPP=/usr/local/Cellar/apple-gcc42/4.2.1-5666.3/bin/cpp-4.2
+
 # customize the colors in terminal preferences to your liking
 # export TERM='xterm-256color'
 export COLOR_NC='\[\033[0m\]' # No Color
@@ -104,7 +109,7 @@ function rvm_info() {
 
 # Only show username/host if not default
 function usernamehost() {
-	echo "${MAGENTA}$default_username ${WHITE}using ${ORANGE}$(rvm_info)$WHITE in "
+	echo "${ORANGE}$(rvm_info)$WHITE in "
 }
 
 # iTerm Tab and Title Customization and prompt customization
@@ -117,8 +122,9 @@ function usernamehost() {
 # Put the penultimate and current directory
 # in the iterm tab
 # \[\e]1;\]$(basename $(dirname $PWD))/\W\[\a\]
+timestamp=$(date +%m-%d-%Y\ \@\ %H:%M:%S)
 
-PS1="\[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[$GREEN\]\w\$(git_info)\[$WHITE\]\n\$ \[$RESET\]"
+PS1="\[\e]2;$PWD\[\a\]\[\e]1;\]$(basename "$(dirname "$PWD")")/\W\[\a\]${BOLD}\$(usernamehost)\[$GREEN\]\w\$(git_info)\[$WHITE\]\[$ORANGE\] \$timestamp\n\$\[$RESET\]"
 
  
 # These two require identify be installed, part of ImageMagick. Install the imagemagick package for your system first. 
