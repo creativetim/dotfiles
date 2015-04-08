@@ -21,6 +21,11 @@ export CC=/usr/local/Cellar/apple-gcc42/4.2.1-5666.3/bin/gcc-4.2
 export CXX=/usr/local/Cellar/apple-gcc42/4.2.1-5666.3/bin/g++-4.2
 export CPP=/usr/local/Cellar/apple-gcc42/4.2.1-5666.3/bin/cpp-4.2
 
+# Stuff for Oracle
+# Based on the following: http://stackoverflow.com/questions/11894194/how-to-install-ruby-oci8
+export DYLD_LIBRARY_PATH=/opt/oracle/instantclient_11_2
+export ORACLE_HOME=/opt/oracle/instantclient_11_2
+
 # customize the colors in terminal preferences to your liking
 # export TERM='xterm-256color'
 export COLOR_NC='\[\033[0m\]' # No Color
@@ -141,6 +146,8 @@ alias f='find . -iname'
 alias ducks='du -cks * | sort -rn|head -11' # Lists the size of all the folders and files
 alias top='top -o cpu'
 alias systail='tail -f /var/log/system.log'
+alias r='rails'
+alias burp='brew update && brew upgrade && brew cleanup --force && brew prune && brew doctor'
  
 # allows you to save bookmarks to folders
 #  cd ~/src/git
